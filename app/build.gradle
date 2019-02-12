@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.bluelampcreative.androidmvvm"
+        minSdkVersion 27
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def globalDependencies = rootProject.ext.globalDependencies
+    def uiDependencies = rootProject.ext.uiDependencies
+    def uiTestDependencies = rootProject.ext.uiTestDependencies
+
+    implementation globalDependencies.ktxCore
+    implementation globalDependencies.timber
+    implementation globalDependencies.coroutines
+    implementation globalDependencies.androidCoroutines
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation uiDependencies.appCompat
+    implementation uiDependencies.constraintLayout
+    implementation uiDependencies.material
+    implementation uiDependencies.supportFragment
+    implementation uiDependencies.coordinatorLayout
+    implementation uiDependencies.navigationFragment
+    implementation uiDependencies.navigationUI
+    implementation uiDependencies.lifeCycleExtensions
+    implementation uiDependencies.lifeCycleCommonJava8
+    implementation uiDependencies.koinAndroid
+    implementation uiDependencies.koinAndroidxViewModel
+    implementation uiDependencies.koinAndroidxScope
+
+    testImplementation globalDependencies.junit
+
+    androidTestImplementation globalDependencies.runner
+    androidTestImplementation globalDependencies.mockitoKotlin
+    androidTestImplementation globalDependencies.coreTest
+    androidTestImplementation globalDependencies.androidJunit
+    androidTestImplementation globalDependencies.liveDataTest
+    androidTestImplementation globalDependencies.junitAssert
+
+    androidTestImplementation uiTestDependencies.espresso
+    androidTestImplementation uiTestDependencies.navigationTest
+    androidTestImplementation uiTestDependencies.fragmentTest
+}
