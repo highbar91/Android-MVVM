@@ -13,6 +13,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            debuggable true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -22,6 +25,7 @@ android {
 
 dependencies {
     def globalDependencies = rootProject.ext.globalDependencies
+    def dataDependencies = rootProject.ext.dataDependencies
     def uiDependencies = rootProject.ext.uiDependencies
     def uiTestDependencies = rootProject.ext.uiTestDependencies
 
@@ -44,6 +48,11 @@ dependencies {
     implementation uiDependencies.koinAndroid
     implementation uiDependencies.koinAndroidxViewModel
     implementation uiDependencies.koinAndroidxScope
+
+    implementation dataDependencies.retrofit
+    implementation dataDependencies.gsonConverter
+    implementation dataDependencies.okHttp
+    implementation dataDependencies.okHttpLogger
 
     testImplementation globalDependencies.junit
 

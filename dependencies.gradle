@@ -20,7 +20,7 @@ ext {
     lifecycleVersion = "2.0.0"
 
     retrofitVersion = "2.5.0"
-
+    okHttpVersion = "3.8.1"
     ktxCoreVersion = "1.0.0"
 
     junitVersion = "4.12"
@@ -71,18 +71,13 @@ ext {
             navigationTest          : "android.arch.navigation:navigation-testing:${navigationVersion}"
     ]
 
-    domainDependencies = [
-
-    ]
-
-    domainTestDependencies = [
-
-    ]
-
     dataDependencies = [
             roomRuntime             : "androidx.room:room-runtime:${roomVersion}",
             roomAnnotaionProcessor  : "androidx.room:room-compiler:${roomVersion}",
-            retrofit                : "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+            retrofit                : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            gsonConverter           : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            okHttp                  : "com.squareup.okhttp3:okhttp:${okHttpVersion}",
+            okHttpLogger            : "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}"
     ]
 
     dataTestDependencies = [
