@@ -4,7 +4,10 @@ import com.bluelampcreative.androidmvvm.models.Dummy
 
 class DummyDataAPIClient(private val dummyAPI: DummyAPI) {
 
-    fun getDummyData(): List<Dummy>? {
-        return dummyAPI.getDummyData().body()
+    suspend fun getDummyData(): List<Dummy>? {
+        val result =  dummyAPI.getDummyData().await()
+        return result.map {
+
+        }
     }
 }

@@ -53,6 +53,7 @@ dependencies {
     implementation dataDependencies.gsonConverter
     implementation dataDependencies.okHttp
     implementation dataDependencies.okHttpLogger
+    implementation dataDependencies.crAdapter
 
     testImplementation globalDependencies.junit
 
