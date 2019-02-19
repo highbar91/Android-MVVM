@@ -25,9 +25,7 @@ android {
 
 dependencies {
     def globalDependencies = rootProject.ext.globalDependencies
-    def dataDependencies = rootProject.ext.dataDependencies
-    def uiDependencies = rootProject.ext.uiDependencies
-    def uiTestDependencies = rootProject.ext.uiTestDependencies
+    def testDependencies = rootProject.ext.testDependencies
 
     implementation globalDependencies.ktxCore
     implementation globalDependencies.timber
@@ -36,35 +34,36 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation uiDependencies.appCompat
-    implementation uiDependencies.constraintLayout
-    implementation uiDependencies.material
-    implementation uiDependencies.supportFragment
-    implementation uiDependencies.coordinatorLayout
-    implementation uiDependencies.navigationFragment
-    implementation uiDependencies.navigationUI
-    implementation uiDependencies.lifeCycleExtensions
-    implementation uiDependencies.lifeCycleCommonJava8
-    implementation uiDependencies.koinAndroid
-    implementation uiDependencies.koinAndroidxViewModel
-    implementation uiDependencies.koinAndroidxScope
+    implementation globalDependencies.appCompat
+    implementation globalDependencies.constraintLayout
+    implementation globalDependencies.material
+    implementation globalDependencies.supportFragment
+    implementation globalDependencies.coordinatorLayout
+    implementation globalDependencies.navigationFragment
+    implementation globalDependencies.navigationUI
+    implementation globalDependencies.lifeCycleExtensions
+    implementation globalDependencies.lifeCycleCommonJava8
+    implementation globalDependencies.koinAndroid
+    implementation globalDependencies.koinAndroidxViewModel
+    implementation globalDependencies.koinAndroidxScope
 
-    implementation dataDependencies.retrofit
-    implementation dataDependencies.gsonConverter
-    implementation dataDependencies.okHttp
-    implementation dataDependencies.okHttpLogger
-    implementation dataDependencies.crAdapter
+    implementation globalDependencies.retrofit
+    implementation globalDependencies.gsonConverter
+    implementation globalDependencies.moshiConverter
 
-    testImplementation globalDependencies.junit
+    implementation globalDependencies.okHttp
+    implementation globalDependencies.okHttpLogger
 
-    androidTestImplementation globalDependencies.runner
-    androidTestImplementation globalDependencies.mockitoKotlin
-    androidTestImplementation globalDependencies.coreTest
-    androidTestImplementation globalDependencies.androidJunit
-    androidTestImplementation globalDependencies.liveDataTest
-    androidTestImplementation globalDependencies.junitAssert
+    testImplementation testDependencies.junit
 
-    androidTestImplementation uiTestDependencies.espresso
-    androidTestImplementation uiTestDependencies.navigationTest
-    androidTestImplementation uiTestDependencies.fragmentTest
+    androidTestImplementation testDependencies.runner
+    androidTestImplementation testDependencies.mockitoKotlin
+    androidTestImplementation testDependencies.coreTest
+    androidTestImplementation testDependencies.androidJunit
+    androidTestImplementation testDependencies.liveDataTest
+    androidTestImplementation testDependencies.junitAssert
+
+    androidTestImplementation testDependencies.espresso
+    androidTestImplementation testDependencies.navigationTest
+    androidTestImplementation testDependencies.fragmentTest
 }

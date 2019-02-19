@@ -22,14 +22,14 @@ class MainActivity : AppCompatActivity() {
 
         mainActivityViewModel.result.observe(this, Observer {
             for (item in it) {
-                Timber.e("This is a dummy item: $item")
+                Timber.e("This is a dummy item: ${item.message}")
             }
         })
 
         mainActivityViewModel.remoteResult.observe(this, Observer {
             it?.let {
                 for (item in it) {
-                    Timber.e("This is dummy data from the API $item")
+                    Timber.e("This is dummy data from the API ${item.message}")
                 }
             }
         })

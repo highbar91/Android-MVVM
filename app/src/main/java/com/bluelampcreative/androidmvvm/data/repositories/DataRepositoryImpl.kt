@@ -11,7 +11,7 @@ class DataRepositoryImpl(private val dataStore: DataStore, private val dummyData
         return dataStore.getDummyData()
     }
 
-    override suspend fun getRemoteDummyData(): List<Dummy>? {
+    override suspend fun getRemoteDummyData(): List<Dummy>{
         return dummyDataAPIClient.getDummyData()
     }
 }

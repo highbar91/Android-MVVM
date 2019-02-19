@@ -1,18 +1,17 @@
 package com.bluelampcreative.androidmvvm.di
 
 import com.bluelampcreative.androidmvvm.data.local.DataStore
-import com.bluelampcreative.androidmvvm.data.remote.DummyAPI
 import com.bluelampcreative.androidmvvm.data.remote.DummyDataAPIClient
 import com.bluelampcreative.androidmvvm.data.repositories.DataRepositoryImpl
 import com.bluelampcreative.androidmvvm.di.DatasourceProperties.BASE_URL
 import com.bluelampcreative.androidmvvm.features.MainActivityViewModel
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 val uiModule = module {
     viewModel { MainActivityViewModel(get()) }
@@ -35,7 +34,7 @@ object DatasourceProperties {
 
 fun createOkHttpClient(): OkHttpClient {
     val httpLoggingInterceptor = HttpLoggingInterceptor()
-    httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
+    httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
     return OkHttpClient.Builder()
         .addInterceptor(httpLoggingInterceptor).build()
 }
@@ -44,8 +43,7 @@ inline fun <reified T> createDummyApi(okHttpClient: OkHttpClient, url: String): 
     val retrofit = Retrofit.Builder()
         .baseUrl(url)
         .client(okHttpClient)
-        .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
+        .addConverterFactory(MoshiConverterFactory.create())
         .build()
     return retrofit.create(T::class.java)
 }

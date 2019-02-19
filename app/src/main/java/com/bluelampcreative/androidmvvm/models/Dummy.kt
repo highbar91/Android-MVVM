@@ -1,3 +1,5 @@
 package com.bluelampcreative.androidmvvm.models
 
-data class Dummy(val message: String)
+import com.squareup.moshi.Json
+
+class Dummy(val message: String)

@@ -19,10 +19,13 @@ ext {
     constraintLayoutVersion = "1.1.2"
     lifecycleVersion = "2.0.0"
 
-    retrofitVersion = "2.5.0"
+    retrofitVersion = "2.5.1-SNAPSHOT" // includes support for coroutines
+    kotlinConverterVersion = "0.2.0"
     okHttpVersion = "3.8.1"
     crAdapterVersion = "0.9.2"
     ktxCoreVersion = "1.0.0"
+
+    kotlinCoroutinesRetrofitVersion = "1.1.0"
 
     junitVersion = "4.12"
     testRunnerVersion = "1.1.0"
@@ -40,16 +43,6 @@ ext {
             coroutines              : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutinesVersion}",
             androidCoroutines       : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutinesVersion}",
             ktxCore                 : "androidx.core:core-ktx:${ktxCoreVersion}",
-            junit                   : "junit:junit:${junitVersion}",
-            liveDataTest            : "android.arch.core:core-testing:${lifecycleVersion}",
-            mockitoKotlin           : "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
-            coreTest                : "androidx.test:core:${testCoreVersion}",
-            androidJunit            : "androidx.test.ext:junit:${testAndroidJunitVersion}",
-            runner                  : "androidx.test:runner:${testRunnerVersion}",
-            junitAssert             : "androidx.test.ext:junit:${testJunitAssertVersion}"
-    ]
-
-    uiDependencies = [
             appCompat               : "androidx.appcompat:appcompat:${androidBasicXVersion}",
             supportFragment         : "androidx.fragment:fragment:$androidBasicXVersion",
             constraintLayout        : "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}",
@@ -62,27 +55,28 @@ ext {
             koinAndroid             : "org.koin:koin-android:${koinVersion}",
             koinAndroidxViewModel   : "org.koin:koin-androidx-viewmodel:${koinVersion}",
             koinAndroidxScope       : "org.koin:koin-androidx-scope:${koinVersion}",
-            materialDialog          : "com.afollestad.material-dialogs:core:${materialDialogVersion}"
-    ]
-
-    uiTestDependencies = [
-
-            fragmentTest            : "androidx.fragment:fragment-testing:${testFragmentVersion}",
-            espresso                : "androidx.test.espresso:espresso-core:${espressoVersion}",
-            navigationTest          : "android.arch.navigation:navigation-testing:${navigationVersion}"
-    ]
-
-    dataDependencies = [
+            materialDialog          : "com.afollestad.material-dialogs:core:${materialDialogVersion}",
             roomRuntime             : "androidx.room:room-runtime:${roomVersion}",
             roomAnnotaionProcessor  : "androidx.room:room-compiler:${roomVersion}",
             retrofit                : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
             gsonConverter           : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
             okHttp                  : "com.squareup.okhttp3:okhttp:${okHttpVersion}",
             okHttpLogger            : "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
-            crAdapter               : "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${crAdapterVersion}"
+            crAdapter               : "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${crAdapterVersion}",
+            moshiConverter          : "com.squareup.retrofit2:converter-moshi:${retrofitVersion}"
     ]
 
-    dataTestDependencies = [
-            roomTesting             : "androidx.room:room-testing:${roomVersion}",
+    testDependencies = [
+            junit                   : "junit:junit:${junitVersion}",
+            liveDataTest            : "android.arch.core:core-testing:${lifecycleVersion}",
+            mockitoKotlin           : "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
+            coreTest                : "androidx.test:core:${testCoreVersion}",
+            androidJunit            : "androidx.test.ext:junit:${testAndroidJunitVersion}",
+            runner                  : "androidx.test:runner:${testRunnerVersion}",
+            junitAssert             : "androidx.test.ext:junit:${testJunitAssertVersion}",
+            fragmentTest            : "androidx.fragment:fragment-testing:${testFragmentVersion}",
+            espresso                : "androidx.test.espresso:espresso-core:${espressoVersion}",
+            navigationTest          : "android.arch.navigation:navigation-testing:${navigationVersion}",
+            roomTesting             : "androidx.room:room-testing:${roomVersion}"
     ]
 }
