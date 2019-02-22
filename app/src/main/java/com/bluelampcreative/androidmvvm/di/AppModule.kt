@@ -1,5 +1,7 @@
 package com.bluelampcreative.androidmvvm.di
 
+import androidx.navigation.navOptions
+import com.bluelampcreative.androidmvvm.R
 import com.bluelampcreative.androidmvvm.data.local.DataStore
 import com.bluelampcreative.androidmvvm.data.remote.DummyDataAPIClient
 import com.bluelampcreative.androidmvvm.data.repositories.DataRepositoryImpl
@@ -10,11 +12,20 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 val uiModule = module {
     viewModel { MainActivityViewModel(get()) }
+    single {
+        navOptions {
+            anim {
+                enter = R.anim.slide_in_right
+                exit = R.anim.slide_out_left
+                popEnter = R.anim.slide_in_left
+                popExit = R.anim.slide_out_right
+            }
+        }
+    }
 }
 
 val dataModule = module {

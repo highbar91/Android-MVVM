@@ -2,7 +2,7 @@ package com.bluelampcreative.androidmvvm
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.bluelampcreative.androidmvvm.features.MainActivity
+import com.bluelampcreative.androidmvvm.features.onboarding.OnboardingActivity
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
@@ -16,7 +16,7 @@ class SplashActivity : AppCompatActivity(), CoroutineScope {
 
         launch {
             delay(1000)
-            startActivity(MainActivity.create(this@SplashActivity))
+            startActivity(OnboardingActivity.create(this@SplashActivity))
         }
 
     }
