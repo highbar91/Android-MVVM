@@ -15,8 +15,9 @@ class SplashActivity : AppCompatActivity(), CoroutineScope {
         super.onCreate(savedInstanceState)
 
         launch {
-            delay(1000)
+            delay(3000)
             startActivity(OnboardingActivity.create(this@SplashActivity))
+            overridePendingTransition(0, R.anim.fade_out)
         }
 
     }
